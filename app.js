@@ -54,8 +54,8 @@ app.get('/crash-test', () => {
 //app.post('/signup', registerValid, createUser);
 
 //app.post('/signin', loginValid, login);
-mongoose.connect(NODE_ENV === 'production' ? DATA_BASE : 'mongodb://localhost:27017/bitfilmsdb', { useNewUrlParser: true });
-
+// mongoose.connect(NODE_ENV === 'production' ? DATA_BASE : 'mongodb://localhost:27017/bitfilmsdb', { useNewUrlParser: true });
+mongoose.connect(process.env.MONGOD_URI || 'mongodb://localhost:27017/bitfilmsdb', { useNewUrlParser: true });
 app.use(routes);
 
 app.use(errorLogger);
