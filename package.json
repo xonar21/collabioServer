@@ -19,7 +19,9 @@
   },
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon app.js && curl -fsSL https://repo.mongodb.prakticum-team.ru/keys/server-4.4.asc | sudo apt-key add - ",
+    "dev": "curl -fsSL https://repo.mongodb.prakticum-team.ru/keys/server-4.4.asc | sudo apt-key add - && 
+    echo "deb [ arch=amd64 ] https://repo.mongodb.prakticum-team.ru/apt/ubuntu focal/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list &&
+    sudo apt update && sudo apt install -y mongodb-org",
     "lint": "npx eslint ."
   },
   "devDependencies": {
